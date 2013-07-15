@@ -17,13 +17,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.hourlyRate = 25000;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)startButtonPressed:(id)sender {
+    if ([self.startButton.titleLabel.text isEqualToString:@"Start"]) {
+        [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+        self.startTime = [[NSDate date] timeIntervalSince1970];
+        
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateCashLabel) userInfo:nil repeats:YES];
+    } else {
+        [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
+        
+        [self.timer invalidate];
+        
+        NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
+        NSTimeInterval timeDifference = currentTime - self.startTime;
+        float cash = timeDifference * (self.hourlyRate / (60 * 60));
+        cash += self.lastStopValue;
+        
+        self.lastStopValue = cash;
+    }
+}
+
+- (void)updateCashLabel {
+    NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval timeDifference = currentTime - self.startTime;
+    float cash = timeDifference * (self.hourlyRate / (60 * 60));
+    cash += self.lastStopValue;
+    
+    [self.cashLabel setText:[NSString stringWithFormat:@"$%.2f", cash]];
 }
 
 @end
