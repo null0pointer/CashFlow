@@ -76,7 +76,7 @@
     // the touch ended inside the view. aka; a button press
     if (CGRectContainsPoint(self.bounds, [[touches anyObject] locationInView:self])) {
         if (self.target && self.targetSelector) {
-            [self.target performSelector:self.targetSelector];
+            [self.target performSelector:self.targetSelector withObject:self];
         }
     }
 }
