@@ -12,6 +12,7 @@
 		2217000E1796DB1C0046CD3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217000D1796DB1C0046CD3C /* OpenGLES.framework */; };
 		221700101796DB230046CD3C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217000F1796DB230046CD3C /* AVFoundation.framework */; };
 		221700131796DBC30046CD3C /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 221700031796D9AB0046CD3C /* libGPUImage.a */; };
+		221700161796E27F0046CD3C /* CFNumberPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 221700151796E27F0046CD3C /* CFNumberPad.m */; };
 		2217FC10179658810046CD3C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217FC0F179658810046CD3C /* CoreImage.framework */; };
 		2217FC1317965D2B0046CD3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217FC1217965D2B0046CD3C /* QuartzCore.framework */; };
 		2217FC161796CA4F0046CD3C /* CFNumberPadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217FC151796CA4F0046CD3C /* CFNumberPadButton.m */; };
@@ -58,6 +59,8 @@
 		2217000B1796DB120046CD3C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2217000D1796DB1C0046CD3C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2217000F1796DB230046CD3C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		221700141796E27F0046CD3C /* CFNumberPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFNumberPad.h; sourceTree = "<group>"; };
+		221700151796E27F0046CD3C /* CFNumberPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFNumberPad.m; sourceTree = "<group>"; };
 		2217FC0F179658810046CD3C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		2217FC1217965D2B0046CD3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2217FC141796CA4F0046CD3C /* CFNumberPadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFNumberPadButton.h; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				223BEF21179411D9008A7075 /* CFViewController.m */,
 				223BEF23179411D9008A7075 /* CFViewController_iPhone.xib */,
 				223BEF26179411D9008A7075 /* CFViewController_iPad.xib */,
+				221700141796E27F0046CD3C /* CFNumberPad.h */,
+				221700151796E27F0046CD3C /* CFNumberPad.m */,
 				2217FC141796CA4F0046CD3C /* CFNumberPadButton.h */,
 				2217FC151796CA4F0046CD3C /* CFNumberPadButton.m */,
 				223BEF0F179411D9008A7075 /* Supporting Files */,
@@ -272,6 +277,7 @@
 				223BEF19179411D9008A7075 /* CFAppDelegate.m in Sources */,
 				223BEF22179411D9008A7075 /* CFViewController.m in Sources */,
 				2217FC161796CA4F0046CD3C /* CFNumberPadButton.m in Sources */,
+				221700161796E27F0046CD3C /* CFNumberPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

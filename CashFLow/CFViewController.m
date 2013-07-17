@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CFViewController.h"
+#import "CFNumberPad.h"
 #import "GPUImage.h"
 
 @interface CFViewController ()
@@ -23,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    self.hourlyRate = 25000;
+    self.hourlyRate = 30.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,20 +54,9 @@
 }
 
 - (IBAction)blur:(id)sender {
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     
-    UIGraphicsBeginImageContextWithOptions(keyWindow.frame.size, YES, 1.0);
-    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    GPUImageFastBlurFilter *blurFilter = [[GPUImageFastBlurFilter alloc] init];
-    blurFilter.blurPasses = 20;
-    UIImage *processedImage = [blurFilter imageByFilteringImage:layerImage];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:keyWindow.bounds];
-    [imageView setImage:layerImage];
-    [keyWindow addSubview:imageView];
+    CFNumberPad *numberPad = [[CFNumberPad alloc] init];
+    [numberPad present];
 }
 
 - (void)updateCashLabel {
@@ -77,13 +67,5 @@
     
     [self.cashLabel setText:[NSString stringWithFormat:@"$%.2f", cash]];
 }
-
-//- (UIImage *)blurredImage:(UIImage *)input withBlurLevel:(CGFloat)blurLevel {
-//    CIImage *inputImage = [CIImage imageWithCGImage:input.CGImage];
-//    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur" keysAndValues:kCIInputImageKey, inputImage, @"inputRadius", @(blurLevel), nil];
-//    CIImage *outputImage = filter.outputImage;
-//    UIImage *output = [UIImage imageWithCIImage:outputImage];
-//    return output;
-//}
 
 @end

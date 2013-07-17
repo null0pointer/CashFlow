@@ -10,10 +10,16 @@
 
 @interface CFNumberPadButton : UIView
 
-@property (nonatomic)           CGRect      originalFrame;
-@property (nonatomic)           CGRect      depressedFrame;
+@property (weak, nonatomic)     id                              target;
+@property (nonatomic)           SEL                             targetSelector;
 
-@property (strong, nonatomic)   UIImageView *image;
-@property (strong, nonatomic)   UILabel     *titleLabel;
+@property (nonatomic)           CGRect                          originalFrame;
+@property (nonatomic)           CGRect                          depressedFrame;
+
+@property (strong, nonatomic)   UIView                          *backgroundView;
+@property (strong, nonatomic)   UIImageView                     *image;
+@property (strong, nonatomic)   UILabel                         *titleLabel;
+
+- (void)setTarget:(id)target withSelector:(SEL)selector;
 
 @end
