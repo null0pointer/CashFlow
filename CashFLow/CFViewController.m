@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CFViewController.h"
+#import "GPUImage.h"
 
 @interface CFViewController ()
 
@@ -53,14 +54,18 @@
 
 - (IBAction)blur:(id)sender {
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    UIGraphicsBeginImageContextWithOptions(keyWindow.frame.size, YES, 1.0);
-    CGContextRef currentContext = UIGraphicsGetCurrentContext();
-    [keyWindow.layer renderInContext:currentContext];
     
-    UIImage *image = [self blurredImage:UIGraphicsGetImageFromCurrentImageContext() withBlurLevel:5.0];
+    UIGraphicsBeginImageContextWithOptions(keyWindow.frame.size, YES, 1.0);
+    [keyWindow.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    GPUImageFastBlurFilter *blurFilter = [[GPUImageFastBlurFilter alloc] init];
+    blurFilter.blurPasses = 20;
+    UIImage *processedImage = [blurFilter imageByFilteringImage:layerImage];
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:keyWindow.bounds];
-    [imageView setImage:image];
+    [imageView setImage:layerImage];
     [keyWindow addSubview:imageView];
 }
 
@@ -73,12 +78,12 @@
     [self.cashLabel setText:[NSString stringWithFormat:@"$%.2f", cash]];
 }
 
-- (UIImage *)blurredImage:(UIImage *)input withBlurLevel:(CGFloat)blurLevel {
-    CIImage *inputImage = [CIImage imageWithCGImage:input.CGImage];
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur" keysAndValues:kCIInputImageKey, inputImage, @"inputRadius", @(blurLevel), nil];
-    CIImage *outputImage = filter.outputImage;
-    UIImage *output = [UIImage imageWithCIImage:outputImage];
-    return output;
-}
+//- (UIImage *)blurredImage:(UIImage *)input withBlurLevel:(CGFloat)blurLevel {
+//    CIImage *inputImage = [CIImage imageWithCGImage:input.CGImage];
+//    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur" keysAndValues:kCIInputImageKey, inputImage, @"inputRadius", @(blurLevel), nil];
+//    CIImage *outputImage = filter.outputImage;
+//    UIImage *output = [UIImage imageWithCIImage:outputImage];
+//    return output;
+//}
 
 @end

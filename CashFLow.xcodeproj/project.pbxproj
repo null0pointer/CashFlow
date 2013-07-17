@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2217000A1796DB0C0046CD3C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221700091796DB0C0046CD3C /* CoreMedia.framework */; };
+		2217000C1796DB120046CD3C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217000B1796DB120046CD3C /* CoreVideo.framework */; };
+		2217000E1796DB1C0046CD3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217000D1796DB1C0046CD3C /* OpenGLES.framework */; };
+		221700101796DB230046CD3C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217000F1796DB230046CD3C /* AVFoundation.framework */; };
+		221700131796DBC30046CD3C /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 221700031796D9AB0046CD3C /* libGPUImage.a */; };
 		2217FC10179658810046CD3C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217FC0F179658810046CD3C /* CoreImage.framework */; };
 		2217FC1317965D2B0046CD3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217FC1217965D2B0046CD3C /* QuartzCore.framework */; };
 		2217FC161796CA4F0046CD3C /* CFNumberPadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2217FC151796CA4F0046CD3C /* CFNumberPadButton.m */; };
@@ -24,11 +29,40 @@
 		223BEF28179411D9008A7075 /* CFViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223BEF26179411D9008A7075 /* CFViewController_iPad.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		221700021796D9AB0046CD3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		221700041796D9AB0046CD3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
+		};
+		221700111796DBAC0046CD3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCF1A33314DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		221700091796DB0C0046CD3C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2217000B1796DB120046CD3C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2217000D1796DB1C0046CD3C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		2217000F1796DB230046CD3C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2217FC0F179658810046CD3C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		2217FC1217965D2B0046CD3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2217FC141796CA4F0046CD3C /* CFNumberPadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFNumberPadButton.h; sourceTree = "<group>"; };
 		2217FC151796CA4F0046CD3C /* CFNumberPadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFNumberPadButton.m; sourceTree = "<group>"; };
+		2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		223BEF05179411D9008A7075 /* CashFLow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashFLow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		223BEF08179411D9008A7075 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		223BEF0A179411D9008A7075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,20 +87,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221700101796DB230046CD3C /* AVFoundation.framework in Frameworks */,
+				2217000E1796DB1C0046CD3C /* OpenGLES.framework in Frameworks */,
+				2217000C1796DB120046CD3C /* CoreVideo.framework in Frameworks */,
+				2217000A1796DB0C0046CD3C /* CoreMedia.framework in Frameworks */,
 				2217FC1317965D2B0046CD3C /* QuartzCore.framework in Frameworks */,
 				2217FC10179658810046CD3C /* CoreImage.framework in Frameworks */,
 				223BEF09179411D9008A7075 /* UIKit.framework in Frameworks */,
 				223BEF0B179411D9008A7075 /* Foundation.framework in Frameworks */,
 				223BEF0D179411D9008A7075 /* CoreGraphics.framework in Frameworks */,
+				221700131796DBC30046CD3C /* libGPUImage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2217FFFD1796D9AA0046CD3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				221700031796D9AB0046CD3C /* libGPUImage.a */,
+				221700051796D9AB0046CD3C /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		223BEEFC179411D9008A7075 = {
 			isa = PBXGroup;
 			children = (
+				2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */,
 				223BEF0E179411D9008A7075 /* CashFLow */,
 				223BEF07179411D9008A7075 /* Frameworks */,
 				223BEF06179411D9008A7075 /* Products */,
@@ -84,6 +133,10 @@
 		223BEF07179411D9008A7075 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2217000F1796DB230046CD3C /* AVFoundation.framework */,
+				2217000D1796DB1C0046CD3C /* OpenGLES.framework */,
+				2217000B1796DB120046CD3C /* CoreVideo.framework */,
+				221700091796DB0C0046CD3C /* CoreMedia.framework */,
 				2217FC1217965D2B0046CD3C /* QuartzCore.framework */,
 				2217FC0F179658810046CD3C /* CoreImage.framework */,
 				223BEF08179411D9008A7075 /* UIKit.framework */,
@@ -137,6 +190,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				221700121796DBAC0046CD3C /* PBXTargetDependency */,
 			);
 			name = CashFLow;
 			productName = CashFLow;
@@ -163,12 +217,35 @@
 			mainGroup = 223BEEFC179411D9008A7075;
 			productRefGroup = 223BEF06179411D9008A7075 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2217FFFD1796D9AA0046CD3C /* Products */;
+					ProjectRef = 2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				223BEF04179411D9008A7075 /* CashFLow */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		221700031796D9AB0046CD3C /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 221700021796D9AB0046CD3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		221700051796D9AB0046CD3C /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = 221700041796D9AB0046CD3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		223BEF03179411D9008A7075 /* Resources */ = {
@@ -199,6 +276,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		221700121796DBAC0046CD3C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage;
+			targetProxy = 221700111796DBAC0046CD3C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		223BEF11179411D9008A7075 /* InfoPlist.strings */ = {
@@ -291,6 +376,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CashFLow/CashFLow-Prefix.pch";
+				HEADER_SEARCH_PATHS = "GPUImage/framework/**";
 				INFOPLIST_FILE = "CashFLow/CashFLow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -303,6 +389,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CashFLow/CashFLow-Prefix.pch";
+				HEADER_SEARCH_PATHS = "GPUImage/framework/**";
 				INFOPLIST_FILE = "CashFLow/CashFLow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
