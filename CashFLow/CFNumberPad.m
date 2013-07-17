@@ -10,7 +10,9 @@
 
 #import "GPUImage.h"
 
-@implementation CFNumberPad
+@implementation CFNumberPad {
+    BOOL containsDecimal;
+}
 
 - (id)init {
     return [self initWithInitialValue:0.0];
@@ -32,6 +34,9 @@
         self.width = width;
         self.height = height;
         self.buttonSeparation = buttonSeparation;
+        self.valueString = [NSString stringWithFormat:@"%g", self.value];
+        
+        containsDecimal = ([self.valueString rangeOfString:@"."].location != NSNotFound);
         
         self.blurView = [[UIImageView alloc] init];
         self.backgroundView = [[UIView alloc] init];
@@ -41,7 +46,8 @@
         self.contentView.backgroundColor = [UIColor clearColor];
         
         self.valueLabel = [[UILabel alloc] init];
-        [self.valueLabel setText:[NSString stringWithFormat:@"%f", self.value]];
+        self.valueLabel.textAlignment = NSTextAlignmentRight;
+        [self.valueLabel setText:self.valueString];
         
         [self initialiseButtons];
         
@@ -168,15 +174,36 @@
 }
 
 - (void)numberButtonPressed:(CFNumberPadButton *)button {
+    self.valueString = [self.valueString stringByAppendingFormat:@"%d", button.tag];
     
+    // remove leading zero
+    if ([[self.valueString substringToIndex:1] isEqualToString:@"0"]) {
+        if (self.valueString.length > 1) {
+            if (![[self.valueString substringToIndex:2] isEqualToString:@"0."]) {
+                self.valueString = [self.valueString substringFromIndex:1];
+            }
+        }
+    }
+    
+    // TODO: set the actual value
+    self.valueLabel.text = self.valueString;
 }
 
 - (void)decimalButtonPressed {
-    
+    if (!containsDecimal) {
+        containsDecimal = YES;
+        
+        self.valueString = [self.valueString stringByAppendingString:@"."];
+        self.valueLabel.text = self.valueString;
+    }
 }
 
 - (void)clearButtonPressed {
+    containsDecimal = NO;
     
+    self.valueString = @"0";
+    self.value = 0;
+    self.valueLabel.text = self.valueString;
 }
 
 - (void)cancelButtonPressed {

@@ -46,7 +46,7 @@
     [super setFrame:frame];
     
     self.originalFrame = self.bounds;
-    self.depressedFrame = CGRectInset(self.bounds, 5, 5);
+    self.depressedFrame = CGRectInset(self.bounds, 2, 2);
     
     self.backgroundView.frame = self.bounds;
     self.image.frame = self.bounds;
@@ -59,7 +59,7 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.backgroundView.frame = self.depressedFrame;
     } completion:nil];
 }
@@ -69,7 +69,7 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.backgroundView.frame = self.originalFrame;
     } completion:nil];
     

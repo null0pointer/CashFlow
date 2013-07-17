@@ -30,6 +30,7 @@
 @property (weak, nonatomic)     id<CFNumberPadDelegate> delegate;
 
 @property (nonatomic)           CGFloat                 value;
+@property (strong, nonatomic)   NSString                *valueString;
 
 @property (nonatomic)           CGFloat                 width;
 @property (nonatomic)           CGFloat                 height;
