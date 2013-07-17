@@ -6,6 +6,10 @@
 //  Copyright (c) 2013 Sam Watson. All rights reserved.
 //
 
+#import <CoreImage/CoreImage.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <QuartzCore/QuartzCore.h>
+
 #import "CFViewController.h"
 
 @interface CFViewController ()
@@ -47,6 +51,19 @@
     }
 }
 
+- (IBAction)blur:(id)sender {
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIGraphicsBeginImageContextWithOptions(keyWindow.frame.size, YES, 1.0);
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    [keyWindow.layer renderInContext:currentContext];
+    
+    UIImage *image = [self blurredImage:UIGraphicsGetImageFromCurrentImageContext() withBlurLevel:5.0];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:keyWindow.bounds];
+    [imageView setImage:image];
+    [keyWindow addSubview:imageView];
+}
+
 - (void)updateCashLabel {
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval timeDifference = currentTime - self.startTime;
@@ -54,6 +71,14 @@
     cash += self.lastStopValue;
     
     [self.cashLabel setText:[NSString stringWithFormat:@"$%.2f", cash]];
+}
+
+- (UIImage *)blurredImage:(UIImage *)input withBlurLevel:(CGFloat)blurLevel {
+    CIImage *inputImage = [CIImage imageWithCGImage:input.CGImage];
+    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur" keysAndValues:kCIInputImageKey, inputImage, @"inputRadius", @(blurLevel), nil];
+    CIImage *outputImage = filter.outputImage;
+    UIImage *output = [UIImage imageWithCIImage:outputImage];
+    return output;
 }
 
 @end

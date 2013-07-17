@@ -21,4 +21,6 @@
 
 - (IBAction)startButtonPressed:(id)sender;
 
+- (IBAction)blur:(id)sender;
+
 @end
