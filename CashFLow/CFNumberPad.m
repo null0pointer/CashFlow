@@ -204,7 +204,6 @@
     }
     
     self.value = [self.valueString floatValue];
-    NSLog(@"%f", self.value);
     [self refreshDisplay];
 }
 
