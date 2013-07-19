@@ -47,6 +47,8 @@
         
         self.valueLabel = [[UILabel alloc] init];
         self.valueLabel.textAlignment = NSTextAlignmentRight;
+        self.valueLabel.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:30.0];
+        [self.valueLabel setAdjustsFontSizeToFitWidth:YES];
         [self refreshDisplay];
         
         [self initialiseButtons];

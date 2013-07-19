@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Sam Watson. All rights reserved.
 //
 
+#define DEFAULT_FONT_NAME @"HelveticaNeue-Light"
+
 #import <UIKit/UIKit.h>
 
 @interface CFNumberPadButton : UIView

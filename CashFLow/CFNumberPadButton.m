@@ -26,6 +26,8 @@
     self.backgroundColor = [UIColor clearColor];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.font = [UIFont fontWithName:DEFAULT_FONT_NAME size:30.0];
+    [self.titleLabel setAdjustsFontSizeToFitWidth:YES];
     
     [self addSubview:self.backgroundView];
     [self addSubview:self.image];
@@ -40,7 +42,7 @@
     
     self.backgroundView.frame = self.bounds;
     self.image.frame = self.bounds;
-    self.titleLabel.frame = self.bounds;
+    self.titleLabel.frame = CGRectInset(self.bounds, 4, 4);
 }
 
 - (void)setTarget:(id)target withSelector:(SEL)selector {
