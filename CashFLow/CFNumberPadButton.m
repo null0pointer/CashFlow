@@ -13,16 +13,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.backgroundView = [[UIView alloc] init];
-        self.image = [[UIImageView alloc] init];
-        self.titleLabel = [[UILabel alloc] init];
-        
-        self.backgroundColor = [UIColor clearColor];
-        self.titleLabel.backgroundColor = [UIColor clearColor];
-        
-        [self addSubview:self.backgroundView];
-        [self addSubview:self.image];
-        [self addSubview:self.titleLabel];
+        [self initialiseSubviews];
     }
     return self;
 }
@@ -34,7 +25,6 @@
     
     self.backgroundColor = [UIColor clearColor];
     self.titleLabel.backgroundColor = [UIColor clearColor];
-    
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:self.backgroundView];
@@ -58,20 +48,32 @@
     self.targetSelector = selector;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)animateToDepressed {
     [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.backgroundView.frame = self.depressedFrame;
     } completion:nil];
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)animateToNormal {
     [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.backgroundView.frame = self.originalFrame;
     } completion:nil];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self animateToDepressed];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (CGRectContainsPoint(self.bounds, [[touches anyObject] locationInView:self])) {
+        [self animateToDepressed];
+    } else {
+        [self animateToNormal];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self animateToNormal];
     
     // the touch ended inside the view. aka; a button press
     if (CGRectContainsPoint(self.bounds, [[touches anyObject] locationInView:self])) {
