@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CFViewController.h"
-#import "GPUImage.h"
+#import "CFPurchaseListCell.h"
 
 @interface CFViewController ()
 
@@ -26,6 +26,11 @@
     self.hourlyRate = 25.0;
     
     [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", self.hourlyRate] forState:UIControlStateNormal];
+    
+    self.purchaseList = [[NSArray alloc] init];
+    
+    self.purchaseListTableView.delegate = self;
+    self.purchaseListTableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,6 +87,24 @@
         self.hourlyRate = value;
         [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", self.hourlyRate] forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - UITableViewDataSource/UITableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.purchaseList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *purchaseListCellStaticIdentifier = @"PurchaseListCell";
+    
+    CFPurchaseListCell *cell = [tableView dequeueReusableCellWithIdentifier:purchaseListCellStaticIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UINib nibWithNibName:@"CFPurchaseListCell" bundle:nil] instantiateWithOwner:self options:nil][0];
+    }
+    
+    return cell;
 }
 
 @end
