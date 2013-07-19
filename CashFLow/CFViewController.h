@@ -19,11 +19,7 @@
 @property (strong, nonatomic)               NSArray         *purchaseList;
 @property (strong, nonatomic)   IBOutlet    UITableView     *purchaseListTableView;
 
-@property (strong, nonatomic)               NSTimer         *timer;
-
 @property (nonatomic)                       float           lastStopValue;
-@property (nonatomic)                       NSTimeInterval  startTime;
-@property (nonatomic)                       float           hourlyRate;
 
 - (IBAction)startButtonPressed:(id)sender;
 - (IBAction)hourlyRateButtonPressed:(id)sender;

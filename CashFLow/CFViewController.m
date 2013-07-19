@@ -12,6 +12,7 @@
 
 #import "CFViewController.h"
 #import "CFPurchaseListCell.h"
+#import "CFIncomeSession.h"
 
 @interface CFViewController ()
 
@@ -23,9 +24,9 @@
 {
     [super viewDidLoad];
     
-    self.hourlyRate = 25.0;
+    [[CFIncomeSession shared] addUpdateObserver:self withSelector:@selector(incomeSessionDidUpdate:)];
     
-    [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", self.hourlyRate] forState:UIControlStateNormal];
+    [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", [[CFIncomeSession shared] moneyPerHour]] forState:UIControlStateNormal];
     
     self.purchaseList = [[NSArray alloc] init];
     
@@ -43,21 +44,15 @@
     if ([self.startButton.titleLabel.text isEqualToString:@"Start"]) {
         [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
         self.hourlyRateButton.enabled = NO;
-        self.startTime = [[NSDate date] timeIntervalSince1970];
         
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateCashLabel) userInfo:nil repeats:YES];
+        [[CFIncomeSession shared] beginIncomeSession];
     } else {
         [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
         self.hourlyRateButton.enabled = YES;
         
-        [self.timer invalidate];
+        [[CFIncomeSession shared] endIncomeSession];
         
-        NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-        NSTimeInterval timeDifference = currentTime - self.startTime;
-        float cash = timeDifference * (self.hourlyRate / (60 * 60));
-        cash += self.lastStopValue;
-        
-        self.lastStopValue = cash;
+        self.lastStopValue = self.lastStopValue + [[CFIncomeSession shared] value];
     }
 }
 
@@ -67,13 +62,10 @@
     [numberPad present];
 }
 
-- (void)updateCashLabel {
-    NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
-    NSTimeInterval timeDifference = currentTime - self.startTime;
-    float cash = timeDifference * (self.hourlyRate / (60 * 60));
-    cash += self.lastStopValue;
+- (void)incomeSessionDidUpdate:(CFIncomeSession *)session {
+    float value = self.lastStopValue + [[CFIncomeSession shared] value];
     
-    [self.cashLabel setText:[NSString stringWithFormat:@"$%.2f", cash]];
+    [self.cashLabel setText:[NSString stringWithFormat:@"$%.2f", value]];
 }
 
 #pragma mark - CFNumberPadDelegate
@@ -84,8 +76,8 @@
 
 - (void)numberPad:(CFNumberPad *)numberPad didEndWithSuccess:(BOOL)success value:(CGFloat)value {
     if (success) {
-        self.hourlyRate = value;
-        [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", self.hourlyRate] forState:UIControlStateNormal];
+        [[CFIncomeSession shared] setMoneyPerHour:value];
+        [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", [[CFIncomeSession shared] moneyPerHour]] forState:UIControlStateNormal];
     }
 }
 
