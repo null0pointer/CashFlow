@@ -203,8 +203,7 @@
         }
     }
     
-    self.value = atof([self.valueString cStringUsingEncoding:NSUTF8StringEncoding]);
-    // TODO: this gives weird values
+    self.value = [self.valueString floatValue];
     NSLog(@"%f", self.value);
     [self refreshDisplay];
 }
