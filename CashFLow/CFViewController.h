@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CFViewController : UIViewController
+#import "CFNumberPad.h"
+
+@interface CFViewController : UIViewController <CFNumberPadDelegate>
 
 @property (strong, nonatomic)   IBOutlet    UILabel         *cashLabel;
 @property (strong, nonatomic)   IBOutlet    UIButton        *startButton;

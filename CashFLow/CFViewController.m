@@ -11,7 +11,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CFViewController.h"
-#import "CFNumberPad.h"
 #import "GPUImage.h"
 
 @interface CFViewController ()
@@ -24,7 +23,9 @@
 {
     [super viewDidLoad];
     
-    self.hourlyRate = 30.0;
+    self.hourlyRate = 25.0;
+    
+    [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", self.hourlyRate] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,11 +37,13 @@
 - (IBAction)startButtonPressed:(id)sender {
     if ([self.startButton.titleLabel.text isEqualToString:@"Start"]) {
         [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+        self.hourlyRateButton.enabled = NO;
         self.startTime = [[NSDate date] timeIntervalSince1970];
         
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateCashLabel) userInfo:nil repeats:YES];
     } else {
         [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
+        self.hourlyRateButton.enabled = YES;
         
         [self.timer invalidate];
         
@@ -55,6 +58,7 @@
 
 - (IBAction)hourlyRateButtonPressed:(id)sender {
     CFNumberPad *numberPad = [[CFNumberPad alloc] init];
+    numberPad.delegate = self;
     [numberPad present];
 }
 
@@ -65,6 +69,19 @@
     cash += self.lastStopValue;
     
     [self.cashLabel setText:[NSString stringWithFormat:@"$%.2f", cash]];
+}
+
+#pragma mark - CFNumberPadDelegate
+
+- (void)numberPadValueChanged:(CFNumberPad *)numberPad {
+    
+}
+
+- (void)numberPad:(CFNumberPad *)numberPad didEndWithSuccess:(BOOL)success value:(CGFloat)value {
+    if (success) {
+        self.hourlyRate = value;
+        [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", self.hourlyRate] forState:UIControlStateNormal];
+    }
 }
 
 @end

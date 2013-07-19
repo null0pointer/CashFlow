@@ -204,6 +204,7 @@
     }
     
     self.value = atof([self.valueString cStringUsingEncoding:NSUTF8StringEncoding]);
+    // TODO: this gives weird values
     NSLog(@"%f", self.value);
     [self refreshDisplay];
 }
