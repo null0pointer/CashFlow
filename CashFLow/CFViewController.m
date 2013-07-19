@@ -53,8 +53,7 @@
     }
 }
 
-- (IBAction)blur:(id)sender {
-    
+- (IBAction)hourlyRateButtonPressed:(id)sender {
     CFNumberPad *numberPad = [[CFNumberPad alloc] init];
     [numberPad present];
 }

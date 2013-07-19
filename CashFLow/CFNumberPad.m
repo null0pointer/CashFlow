@@ -47,7 +47,7 @@
         
         self.valueLabel = [[UILabel alloc] init];
         self.valueLabel.textAlignment = NSTextAlignmentRight;
-        [self.valueLabel setText:self.valueString];
+        [self refreshDisplay];
         
         [self initialiseButtons];
         
@@ -173,6 +173,24 @@
     }];
 }
 
+- (void)refreshDisplay {
+    NSString *displayString = self.valueString;
+    int decimalLocation = displayString.length;
+    NSRange decimalRange = [displayString rangeOfString:@"."];
+    if (decimalRange.location != NSNotFound) {
+        decimalLocation = decimalRange.location;
+    }
+    
+    for (int i = decimalLocation - 3; i > 0; i -= 3) {
+        NSRange replaceRange;
+        replaceRange.location = i;
+        replaceRange.length = 0;
+        displayString = [displayString stringByReplacingCharactersInRange:replaceRange withString:@","];
+    }
+    
+    [self.valueLabel setText:displayString];
+}
+
 - (void)numberButtonPressed:(CFNumberPadButton *)button {
     self.valueString = [self.valueString stringByAppendingFormat:@"%d", button.tag];
     
@@ -185,8 +203,9 @@
         }
     }
     
-    // TODO: set the actual value
-    self.valueLabel.text = self.valueString;
+    self.value = atof([self.valueString cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSLog(@"%f", self.value);
+    [self refreshDisplay];
 }
 
 - (void)decimalButtonPressed {
@@ -194,7 +213,7 @@
         containsDecimal = YES;
         
         self.valueString = [self.valueString stringByAppendingString:@"."];
-        self.valueLabel.text = self.valueString;
+        [self refreshDisplay];
     }
 }
 
@@ -203,7 +222,7 @@
     
     self.valueString = @"0";
     self.value = 0;
-    self.valueLabel.text = self.valueString;
+    [self refreshDisplay];
 }
 
 - (void)cancelButtonPressed {

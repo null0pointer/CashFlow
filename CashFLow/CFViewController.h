@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic)   IBOutlet    UILabel         *cashLabel;
 @property (strong, nonatomic)   IBOutlet    UIButton        *startButton;
+@property (strong, nonatomic)   IBOutlet    UIButton        *hourlyRateButton;
 
 @property (strong, nonatomic)               NSTimer         *timer;
 
@@ -20,7 +21,6 @@
 @property (nonatomic)                       float           hourlyRate;
 
 - (IBAction)startButtonPressed:(id)sender;
-
-- (IBAction)blur:(id)sender;
+- (IBAction)hourlyRateButtonPressed:(id)sender;
 
 @end
