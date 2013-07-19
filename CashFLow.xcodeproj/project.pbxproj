@@ -11,6 +11,7 @@
 		220C0D00179984EF006D6375 /* CFNumberPadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 220C0CFE179984EF006D6375 /* CFNumberPadButton.m */; };
 		220C0D03179986DE006D6375 /* CFPurchaseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 220C0D02179986DE006D6375 /* CFPurchaseListCell.m */; };
 		220C0D05179986FF006D6375 /* CFPurchaseListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220C0D04179986FF006D6375 /* CFPurchaseListCell.xib */; };
+		220C0D0D17998AD7006D6375 /* CFIncomeSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 220C0D0C17998AD7006D6375 /* CFIncomeSession.m */; };
 		2217000A1796DB0C0046CD3C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 221700091796DB0C0046CD3C /* CoreMedia.framework */; };
 		2217000C1796DB120046CD3C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217000B1796DB120046CD3C /* CoreVideo.framework */; };
 		2217000E1796DB1C0046CD3C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217000D1796DB1C0046CD3C /* OpenGLES.framework */; };
@@ -64,6 +65,8 @@
 		220C0D01179986DE006D6375 /* CFPurchaseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFPurchaseListCell.h; sourceTree = "<group>"; };
 		220C0D02179986DE006D6375 /* CFPurchaseListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFPurchaseListCell.m; sourceTree = "<group>"; };
 		220C0D04179986FF006D6375 /* CFPurchaseListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CFPurchaseListCell.xib; sourceTree = "<group>"; };
+		220C0D0B17998AD7006D6375 /* CFIncomeSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFIncomeSession.h; sourceTree = "<group>"; };
+		220C0D0C17998AD7006D6375 /* CFIncomeSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFIncomeSession.m; sourceTree = "<group>"; };
 		221700091796DB0C0046CD3C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2217000B1796DB120046CD3C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2217000D1796DB1C0046CD3C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,15 @@
 			path = CFNumberPad;
 			sourceTree = "<group>";
 		};
+		220C0D0A17998AD7006D6375 /* CFIncomeSession */ = {
+			isa = PBXGroup;
+			children = (
+				220C0D0B17998AD7006D6375 /* CFIncomeSession.h */,
+				220C0D0C17998AD7006D6375 /* CFIncomeSession.m */,
+			);
+			path = CFIncomeSession;
+			sourceTree = "<group>";
+		};
 		2217FFFD1796D9AA0046CD3C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +189,7 @@
 				220C0D01179986DE006D6375 /* CFPurchaseListCell.h */,
 				220C0D02179986DE006D6375 /* CFPurchaseListCell.m */,
 				220C0D04179986FF006D6375 /* CFPurchaseListCell.xib */,
+				220C0D0A17998AD7006D6375 /* CFIncomeSession */,
 				220C0CFA179984EF006D6375 /* CFNumberPad */,
 				223BEF0F179411D9008A7075 /* Supporting Files */,
 			);
@@ -296,6 +309,7 @@
 				220C0CFF179984EF006D6375 /* CFNumberPad.m in Sources */,
 				220C0D00179984EF006D6375 /* CFNumberPadButton.m in Sources */,
 				220C0D03179986DE006D6375 /* CFPurchaseListCell.m in Sources */,
+				220C0D0D17998AD7006D6375 /* CFIncomeSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
