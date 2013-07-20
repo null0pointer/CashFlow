@@ -31,6 +31,9 @@
 		223BEF22179411D9008A7075 /* CFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 223BEF21179411D9008A7075 /* CFViewController.m */; };
 		223BEF25179411D9008A7075 /* CFViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223BEF23179411D9008A7075 /* CFViewController_iPhone.xib */; };
 		223BEF28179411D9008A7075 /* CFViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223BEF26179411D9008A7075 /* CFViewController_iPad.xib */; };
+		22D7D1DA179A788800C8ACD8 /* CFModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1D8179A788800C8ACD8 /* CFModel.xcdatamodeld */; };
+		22D7D1DD179A7A9400C8ACD8 /* IncomeSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1DC179A7A9400C8ACD8 /* IncomeSession.m */; };
+		22D7D1E0179A7A9D00C8ACD8 /* SavingsGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1DF179A7A9D00C8ACD8 /* SavingsGoal.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,11 @@
 		223BEF21179411D9008A7075 /* CFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFViewController.m; sourceTree = "<group>"; };
 		223BEF24179411D9008A7075 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CFViewController_iPhone.xib; sourceTree = "<group>"; };
 		223BEF27179411D9008A7075 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CFViewController_iPad.xib; sourceTree = "<group>"; };
+		22D7D1D9179A788800C8ACD8 /* CFModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CFModel.xcdatamodel; sourceTree = "<group>"; };
+		22D7D1DB179A7A9400C8ACD8 /* IncomeSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncomeSession.h; path = "Core Data/IncomeSession.h"; sourceTree = "<group>"; };
+		22D7D1DC179A7A9400C8ACD8 /* IncomeSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncomeSession.m; path = "Core Data/IncomeSession.m"; sourceTree = "<group>"; };
+		22D7D1DE179A7A9D00C8ACD8 /* SavingsGoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavingsGoal.h; path = "Core Data/SavingsGoal.h"; sourceTree = "<group>"; };
+		22D7D1DF179A7A9D00C8ACD8 /* SavingsGoal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavingsGoal.m; path = "Core Data/SavingsGoal.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +198,7 @@
 				220C0D02179986DE006D6375 /* CFPurchaseListCell.m */,
 				220C0D04179986FF006D6375 /* CFPurchaseListCell.xib */,
 				220C0D0A17998AD7006D6375 /* CFIncomeSession */,
+				22D7D1D5179A787000C8ACD8 /* Core Data */,
 				220C0CFA179984EF006D6375 /* CFNumberPad */,
 				223BEF0F179411D9008A7075 /* Supporting Files */,
 			);
@@ -208,6 +217,18 @@
 				223BEF1E179411D9008A7075 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22D7D1D5179A787000C8ACD8 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				22D7D1D8179A788800C8ACD8 /* CFModel.xcdatamodeld */,
+				22D7D1DE179A7A9D00C8ACD8 /* SavingsGoal.h */,
+				22D7D1DF179A7A9D00C8ACD8 /* SavingsGoal.m */,
+				22D7D1DB179A7A9400C8ACD8 /* IncomeSession.h */,
+				22D7D1DC179A7A9400C8ACD8 /* IncomeSession.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +331,9 @@
 				220C0D00179984EF006D6375 /* CFNumberPadButton.m in Sources */,
 				220C0D03179986DE006D6375 /* CFPurchaseListCell.m in Sources */,
 				220C0D0D17998AD7006D6375 /* CFIncomeSession.m in Sources */,
+				22D7D1DA179A788800C8ACD8 /* CFModel.xcdatamodeld in Sources */,
+				22D7D1DD179A7A9400C8ACD8 /* IncomeSession.m in Sources */,
+				22D7D1E0179A7A9D00C8ACD8 /* SavingsGoal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +481,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22D7D1D8179A788800C8ACD8 /* CFModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22D7D1D9179A788800C8ACD8 /* CFModel.xcdatamodel */,
+			);
+			currentVersion = 22D7D1D9179A788800C8ACD8 /* CFModel.xcdatamodel */;
+			path = CFModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 223BEEFD179411D9008A7075 /* Project object */;
 }
