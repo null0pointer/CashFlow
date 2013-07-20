@@ -36,6 +36,7 @@
 		22D7D1E0179A7A9D00C8ACD8 /* SavingsGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1DF179A7A9D00C8ACD8 /* SavingsGoal.m */; };
 		22D7D1E3179A7AFD00C8ACD8 /* CFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1E2179A7AFD00C8ACD8 /* CFCoreDataManager.m */; };
 		22D7D1E6179A7E4500C8ACD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7D1E5179A7E4500C8ACD8 /* CoreData.framework */; };
+		22D7D1E9179A800100C8ACD8 /* NSManagedObject+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1E8179A800100C8ACD8 /* NSManagedObject+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		22D7D1E1179A7AFD00C8ACD8 /* CFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFCoreDataManager.h; path = "Core Data/CFCoreDataManager.h"; sourceTree = "<group>"; };
 		22D7D1E2179A7AFD00C8ACD8 /* CFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFCoreDataManager.m; path = "Core Data/CFCoreDataManager.m"; sourceTree = "<group>"; };
 		22D7D1E5179A7E4500C8ACD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		22D7D1E7179A800100C8ACD8 /* NSManagedObject+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+Extension.h"; path = "Core Data/NSManagedObject+Extension.h"; sourceTree = "<group>"; };
+		22D7D1E8179A800100C8ACD8 /* NSManagedObject+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+Extension.m"; path = "Core Data/NSManagedObject+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 				22D7D1DC179A7A9400C8ACD8 /* IncomeSession.m */,
 				22D7D1E1179A7AFD00C8ACD8 /* CFCoreDataManager.h */,
 				22D7D1E2179A7AFD00C8ACD8 /* CFCoreDataManager.m */,
+				22D7D1E7179A800100C8ACD8 /* NSManagedObject+Extension.h */,
+				22D7D1E8179A800100C8ACD8 /* NSManagedObject+Extension.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				22D7D1DD179A7A9400C8ACD8 /* IncomeSession.m in Sources */,
 				22D7D1E0179A7A9D00C8ACD8 /* SavingsGoal.m in Sources */,
 				22D7D1E3179A7AFD00C8ACD8 /* CFCoreDataManager.m in Sources */,
+				22D7D1E9179A800100C8ACD8 /* NSManagedObject+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
