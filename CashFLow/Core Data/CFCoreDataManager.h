@@ -8,6 +8,9 @@
 
 #import <CoreData/CoreData.h>
 
+@class IncomeSession;
+@class SavingsGoal;
+
 @interface CFCoreDataManager : NSManagedObjectContext
 
 + (CFCoreDataManager *)writerContext;
@@ -15,7 +18,9 @@
 + (CFCoreDataManager *)temporaryContext;
 
 - (id)initWithConcurrencyType:(NSManagedObjectContextConcurrencyType)ct;
-
 - (void)saveContext;
+
+- (IncomeSession *)newIncomeSession;
+- (SavingsGoal *)newSavingsGoal;
 
 @end

@@ -8,6 +8,10 @@
 
 #import "CFCoreDataManager.h"
 #import "CFAppDelegate.h"
+#import "NSManagedObject+Extension.h"
+
+#import "IncomeSession.h"
+#import "SavingsGoal.h"
 
 @implementation CFCoreDataManager
 
@@ -78,5 +82,15 @@
     }
 }
 
+
+- (IncomeSession *)newIncomeSession {
+    // TODO: should make this account for deletion
+    return [IncomeSession newEntity:@"IncomeSession" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[IncomeSession countInContext:self]] onInsert:nil];
+}
+
+- (SavingsGoal *)newSavingsGoal {
+    // TODO: should make this account for deletion
+    return [SavingsGoal newEntity:@"IncomeSession" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[SavingsGoal countInContext:self]] onInsert:nil];
+}
 
 @end
