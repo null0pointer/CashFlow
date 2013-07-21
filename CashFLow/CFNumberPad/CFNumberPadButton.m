@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Sam Watson. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "CFNumberPadButton.h"
 
 @implementation CFNumberPadButton
@@ -14,6 +16,11 @@
     self = [super init];
     if (self) {
         [self initialiseSubviews];
+        
+//        self.layer.masksToBounds = NO;
+//        self.layer.shadowOffset = CGSizeMake(0, 0);
+//        self.layer.shadowRadius = 1;
+//        self.layer.shadowOpacity = 0.8;
     }
     return self;
 }
