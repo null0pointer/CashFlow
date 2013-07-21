@@ -19,6 +19,7 @@
 @property (nonatomic)           BOOL            isActive;
 @property (strong, nonatomic)   NSTimer         *updateTimer;
 
+@property (strong, nonatomic)   NSDate          *sessionStartDate;
 @property (nonatomic)           NSTimeInterval  sessionStartTime;
 @property (nonatomic)           CGFloat         value;
 

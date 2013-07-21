@@ -2,18 +2,21 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="IncomeSession" representedClassName="IncomeSession" syncable="YES">
         <attribute name="amount_earned" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="money_per_hour" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="start_time" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="SavingsGoal" representedClassName="SavingsGoal" syncable="YES">
+        <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="IncomeSession" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="SavingsGoal" positionX="-56" positionY="189" width="128" height="90"/>
+        <element name="IncomeSession" positionX="160" positionY="192" width="128" height="133"/>
+        <element name="SavingsGoal" positionX="-56" positionY="189" width="128" height="118"/>
     </elements>
 </model>

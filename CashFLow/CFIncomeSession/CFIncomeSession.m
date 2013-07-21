@@ -7,6 +7,9 @@
 //
 
 #import "CFIncomeSession.h"
+#import "CFCoreDataManager.h"
+
+#import "IncomeSession.h"
 
 @implementation CFIncomeSession
 
@@ -51,7 +54,8 @@
 - (void)beginIncomeSession {
     self.isActive = YES;
     
-    self.sessionStartTime = [[NSDate date] timeIntervalSince1970];
+    self.sessionStartDate = [NSDate date];
+    self.sessionStartTime = [self.sessionStartDate timeIntervalSince1970];
     
     CGFloat secondsPerHundredth = (1 / _moneyPerSecond) / 100;
     NSTimeInterval updateInterval = MAX(secondsPerHundredth, CFIncomeSessionMinimumUpdateInterval);
@@ -62,11 +66,24 @@
 - (void)endIncomeSession {
     [self.updateTimer invalidate];
     self.isActive = NO;
+    
+    CFCoreDataManager *temporaryContext = [CFCoreDataManager temporaryContext];
+    
+    IncomeSession *incomeSession = [temporaryContext newIncomeSession];
+    
+    NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval timeDifference = currentTime - self.sessionStartTime;
+    
+    incomeSession.start_time = self.sessionStartDate;
+    incomeSession.duration = [NSNumber numberWithDouble:timeDifference];
+    incomeSession.amount_earned = [NSNumber numberWithFloat:timeDifference * self.moneyPerSecond];
+    incomeSession.money_per_hour = [NSNumber numberWithFloat:self.moneyPerHour];
+    
+    [temporaryContext saveContext];
 }
 
 - (void)update {
     if (self.isActive) {
-        // TODO: switch this to use NSDates for timezone switching
         NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
         NSTimeInterval timeDifference = currentTime - self.sessionStartTime;
         self.value = (timeDifference * self.moneyPerSecond);
