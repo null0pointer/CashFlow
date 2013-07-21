@@ -15,6 +15,7 @@
 #import "CFIncomeSession.h"
 #import "SavingsGoal.h"
 #import "CFCoreDataManager.h"
+#import "CFSavingsGoalEditView.h"
 
 @interface CFViewController ()
 
@@ -157,7 +158,10 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"HERE");
+    if (scrollView.contentOffset.y <= -80) {
+        CFSavingsGoalEditView *editView = [[CFSavingsGoalEditView alloc] initWithNewSavingsGoal];
+        [editView present];
+    }
 }
 
 @end
