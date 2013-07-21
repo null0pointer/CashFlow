@@ -46,12 +46,39 @@
     self.createSavingsGoalView.alpha = 0.0;
     
     [self.purchaseListTableView addSubview:self.createSavingsGoalView];
+    
+    [self setupTableShadow];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setupTableShadow {
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = CGRectMake(0, 0, 1, 8);
+    
+    gradientLayer.colors = [NSArray arrayWithObjects:
+                            (id)[UIColor colorWithWhite:0.5 alpha:0.5].CGColor,
+                            (id)[UIColor colorWithWhite:0.5 alpha:0.0].CGColor,
+                            nil];
+    
+    gradientLayer.locations = [NSArray arrayWithObjects:
+                               [NSNumber numberWithFloat:0.0f],
+                               [NSNumber numberWithFloat:1.0f],
+                               nil];
+    
+    UIGraphicsBeginImageContextWithOptions(gradientLayer.frame.size, NO, 1.0);
+    [gradientLayer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.purchaseListTableView.frame.origin.x, self.purchaseListTableView.frame.origin.y, self.purchaseListTableView.frame.size.width, gradientLayer.frame.size.height)];
+    [imageView setImage:layerImage];
+    
+    [self.view addSubview:imageView];
 }
 
 - (IBAction)startButtonPressed:(id)sender {
