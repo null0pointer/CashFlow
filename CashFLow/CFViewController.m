@@ -125,7 +125,7 @@
 #pragma mark - UITableViewDataSource/UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.purchaseList.count;
+    return 100;//self.purchaseList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
