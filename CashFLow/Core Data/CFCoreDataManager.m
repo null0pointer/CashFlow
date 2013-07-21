@@ -84,13 +84,32 @@
 
 
 - (IncomeSession *)newIncomeSession {
-    // TODO: should make this account for deletion
-    return [IncomeSession newEntity:@"IncomeSession" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[IncomeSession countInContext:self]] onInsert:nil];
+    IncomeSession *incomeSession = [IncomeSession newEntity:@"IncomeSession" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[IncomeSession countInContext:self]] onInsert:nil];
+    incomeSession.deleted = [NSNumber numberWithBool:NO];
+    [self saveContext];
+    
+    return incomeSession;
 }
 
 - (SavingsGoal *)newSavingsGoal {
-    // TODO: should make this account for deletion
-    return [SavingsGoal newEntity:@"IncomeSession" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[SavingsGoal countInContext:self]] onInsert:nil];
+    SavingsGoal *savingsGoal = [SavingsGoal newEntity:@"SavingsGoal" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[SavingsGoal countInContext:self]] onInsert:nil];
+    savingsGoal.deleted = [NSNumber numberWithBool:NO];
+    savingsGoal.completed = [NSNumber numberWithBool:NO];
+    [self saveContext];
+    
+    return savingsGoal;
+}
+
+- (void)deleteIncomeSession:(IncomeSession *)incomeSession {
+    IncomeSession *inContextIncomeSession = (IncomeSession *)[self objectWithID:incomeSession.objectID];
+    inContextIncomeSession.deleted = [NSNumber numberWithBool:YES];
+    [self saveContext];
+}
+
+- (void)deleteSavingsGoal:(SavingsGoal *)savingsGoal {
+    SavingsGoal *inContextSavingsGoal = (SavingsGoal *)[self objectWithID:savingsGoal.objectID];
+    inContextSavingsGoal.deleted = [NSNumber numberWithBool:YES];
+    [self saveContext];
 }
 
 @end
