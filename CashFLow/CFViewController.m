@@ -30,10 +30,22 @@
     
     [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", [[CFIncomeSession shared] moneyPerHour]] forState:UIControlStateNormal];
     
-    self.purchaseList = [[NSArray alloc] init];
+    self.purchaseList = [[CFCoreDataManager mainContext] allActiveSavingsGoals];
     
     self.purchaseListTableView.delegate = self;
     self.purchaseListTableView.dataSource = self;
+    
+    self.createSavingsGoalView = [[UIView alloc] initWithFrame:CGRectMake(0, -80, 320, 80)];
+    UILabel *label = [[UILabel alloc] initWithFrame:self.createSavingsGoalView.bounds];
+    label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
+    label.text = @"Release for new savings goal";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.backgroundColor = [UIColor clearColor];
+    [self.createSavingsGoalView addSubview:label];
+    self.createSavingsGoalView.backgroundColor = [UIColor greenColor];
+    self.createSavingsGoalView.alpha = 0.0;
+    
+    [self.purchaseListTableView addSubview:self.createSavingsGoalView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +101,10 @@
     return self.purchaseList.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *purchaseListCellStaticIdentifier = @"PurchaseListCell";
     
@@ -99,6 +115,22 @@
     }
     
     return cell;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    float yOffset = scrollView.contentOffset.y;
+    
+    if (yOffset >= 0) {
+        self.createSavingsGoalView.alpha = 0.0;
+    } else if (yOffset <= -80) {
+        self.createSavingsGoalView.alpha = 1.0;
+    } else {
+        self.createSavingsGoalView.alpha = (yOffset / -80.0);
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"HERE");
 }
 
 @end

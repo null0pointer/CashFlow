@@ -10,16 +10,19 @@
 
 #import "CFNumberPad.h"
 
+@class CFPurchaseListCell;
+
 @interface CFViewController : UIViewController <CFNumberPadDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic)   IBOutlet    UILabel         *cashLabel;
-@property (strong, nonatomic)   IBOutlet    UIButton        *startButton;
-@property (strong, nonatomic)   IBOutlet    UIButton        *hourlyRateButton;
+@property (strong, nonatomic)   IBOutlet    UILabel             *cashLabel;
+@property (strong, nonatomic)   IBOutlet    UIButton            *startButton;
+@property (strong, nonatomic)   IBOutlet    UIButton            *hourlyRateButton;
 
-@property (strong, nonatomic)               NSArray         *purchaseList;
-@property (strong, nonatomic)   IBOutlet    UITableView     *purchaseListTableView;
+@property (strong, nonatomic)               NSArray             *purchaseList;
+@property (strong, nonatomic)   IBOutlet    UITableView         *purchaseListTableView;
+@property (strong, nonatomic)               UIView              *createSavingsGoalView;
 
-@property (nonatomic)                       float           lastStopValue;
+@property (nonatomic)                       float               lastStopValue;
 
 - (IBAction)startButtonPressed:(id)sender;
 - (IBAction)hourlyRateButtonPressed:(id)sender;
