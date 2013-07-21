@@ -22,8 +22,10 @@
 
 - (IncomeSession *)newIncomeSession;
 - (SavingsGoal *)newSavingsGoal;
-
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession;
 - (void)deleteSavingsGoal:(SavingsGoal *)savingsGoal;
+
+- (NSArray *)allIncomeSessions;
+- (NSArray *)allActiveSavingsGoals;
 
 @end

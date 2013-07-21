@@ -13,6 +13,8 @@
 #import "CFViewController.h"
 #import "CFPurchaseListCell.h"
 #import "CFIncomeSession.h"
+#import "SavingsGoal.h"
+#import "CFCoreDataManager.h"
 
 @interface CFViewController ()
 

@@ -112,4 +112,13 @@
     [self saveContext];
 }
 
+- (NSArray *)allIncomeSessions {
+    return [IncomeSession findAllByAttribute:@"deleted" value:[NSNumber numberWithBool:NO] inContext:self];
+}
+
+- (NSArray *)allActiveSavingsGoals {
+    NSArray *allSavingsGoals = [SavingsGoal findAllByAttribute:@"deleted" value:[NSNumber numberWithBool:NO] inContext:self];
+    return [allSavingsGoals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"completed == %@", [NSNumber numberWithBool:NO]]];
+}
+
 @end
