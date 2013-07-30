@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 
 @class IncomeSession;
-@class SavingsGoal;
+@class Luxury;
 
 @interface CFCoreDataManager : NSManagedObjectContext
 
@@ -21,11 +21,11 @@
 - (void)saveContext;
 
 - (IncomeSession *)newIncomeSession;
-- (SavingsGoal *)newSavingsGoal;
+- (Luxury *)newLuxury;
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession;
-- (void)deleteSavingsGoal:(SavingsGoal *)savingsGoal;
+- (void)deleteLuxury:(Luxury *)luxury;
 
 - (NSArray *)allIncomeSessions;
-- (NSArray *)allActiveSavingsGoals;
+- (NSArray *)allActiveLuxuries;
 
 @end

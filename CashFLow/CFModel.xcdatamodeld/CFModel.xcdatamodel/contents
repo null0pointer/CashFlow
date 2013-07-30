@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Expense" representedClassName="Expense" syncable="YES">
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="period" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="expenses" inverseEntity="User" syncable="YES"/>
+    </entity>
     <entity name="IncomeSession" representedClassName="IncomeSession" syncable="YES">
         <attribute name="amount_earned" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -7,16 +15,49 @@
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="money_per_hour" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="start_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="job" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Job" inverseName="income_sessions" inverseEntity="Job" syncable="YES"/>
     </entity>
-    <entity name="SavingsGoal" representedClassName="SavingsGoal" syncable="YES">
+    <entity name="Job" representedClassName="Job" syncable="YES">
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="earnings_after_tax" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="earnings_gross" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="is_salary" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="money_per_hour" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="salary" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="income_sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IncomeSession" inverseName="job" inverseEntity="IncomeSession" syncable="YES"/>
+        <relationship name="taxes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tax" inverseName="jobs" inverseEntity="Tax" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="jobs" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Luxury" representedClassName="Luxury" syncable="YES">
         <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="luxuries" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Tax" representedClassName="Tax" syncable="YES">
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="taxes" inverseEntity="Job" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="user" inverseEntity="Expense" syncable="YES"/>
+        <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="user" inverseEntity="Job" syncable="YES"/>
+        <relationship name="luxuries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Luxury" inverseName="user" inverseEntity="Luxury" syncable="YES"/>
     </entity>
     <elements>
-        <element name="IncomeSession" positionX="160" positionY="192" width="128" height="133"/>
-        <element name="SavingsGoal" positionX="-56" positionY="189" width="128" height="118"/>
+        <element name="Expense" positionX="-614" positionY="-225" width="128" height="133"/>
+        <element name="IncomeSession" positionX="88" positionY="-301" width="128" height="148"/>
+        <element name="Job" positionX="-171" positionY="-207" width="128" height="208"/>
+        <element name="Luxury" positionX="-612" positionY="0" width="128" height="133"/>
+        <element name="Tax" positionX="88" positionY="-138" width="128" height="118"/>
+        <element name="User" positionX="-389" positionY="-144" width="128" height="118"/>
     </elements>
 </model>

@@ -13,9 +13,9 @@
 #import "CFViewController.h"
 #import "CFPurchaseListCell.h"
 #import "CFIncomeSession.h"
-#import "SavingsGoal.h"
+#import "Luxury.h"
 #import "CFCoreDataManager.h"
-#import "CFSavingsGoalEditView.h"
+#import "CFLuxuryEditView.h"
 
 @interface CFViewController ()
 
@@ -31,22 +31,22 @@
     
     [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", [[CFIncomeSession shared] moneyPerHour]] forState:UIControlStateNormal];
     
-    self.purchaseList = [[CFCoreDataManager mainContext] allActiveSavingsGoals];
+    self.purchaseList = [[CFCoreDataManager mainContext] allActiveLuxuries];
     
     self.purchaseListTableView.delegate = self;
     self.purchaseListTableView.dataSource = self;
     
-    self.createSavingsGoalView = [[UIView alloc] initWithFrame:CGRectMake(0, -80, 320, 80)];
-    UILabel *label = [[UILabel alloc] initWithFrame:self.createSavingsGoalView.bounds];
+    self.createLuxuryView = [[UIView alloc] initWithFrame:CGRectMake(0, -80, 320, 80)];
+    UILabel *label = [[UILabel alloc] initWithFrame:self.createLuxuryView.bounds];
     label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
     label.text = @"Release for new savings goal";
     label.textAlignment = NSTextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
-    [self.createSavingsGoalView addSubview:label];
-    self.createSavingsGoalView.backgroundColor = [UIColor greenColor];
-    self.createSavingsGoalView.alpha = 0.0;
+    [self.createLuxuryView addSubview:label];
+    self.createLuxuryView.backgroundColor = [UIColor greenColor];
+    self.createLuxuryView.alpha = 0.0;
     
-    [self.purchaseListTableView addSubview:self.createSavingsGoalView];
+    [self.purchaseListTableView addSubview:self.createLuxuryView];
     
     [self setupTableShadow];
 }
@@ -149,17 +149,17 @@
     float yOffset = scrollView.contentOffset.y;
     
     if (yOffset >= 0) {
-        self.createSavingsGoalView.alpha = 0.0;
+        self.createLuxuryView.alpha = 0.0;
     } else if (yOffset <= -80) {
-        self.createSavingsGoalView.alpha = 1.0;
+        self.createLuxuryView.alpha = 1.0;
     } else {
-        self.createSavingsGoalView.alpha = (yOffset / -80.0);
+        self.createLuxuryView.alpha = (yOffset / -80.0);
     }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (scrollView.contentOffset.y <= -80) {
-        CFSavingsGoalEditView *editView = [[CFSavingsGoalEditView alloc] initWithNewSavingsGoal];
+        CFLuxuryEditView *editView = [[CFLuxuryEditView alloc] initWithNewLuxury];
         [editView present];
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CFSavingsGoalEditView.h
+//  CFLuxuryEditView.h
 //  CashFLow
 //
 //  Created by Sam Watson on 22/07/13.
@@ -12,11 +12,11 @@
 #import <UIKit/UIKit.h>
 
 @class CFCoreDataManager;
-@class SavingsGoal;
+@class Luxury;
 
-@interface CFSavingsGoalEditView : UIView
+@interface CFLuxuryEditView : UIView
 
-@property (strong, nonatomic)   SavingsGoal             *savingsGoal;
+@property (strong, nonatomic)   Luxury             *luxury;
 @property (strong, nonatomic)   CFCoreDataManager       *temporaryContext;
 
 @property (strong, nonatomic)   UITextField             *titleField;
@@ -28,8 +28,8 @@
 @property (strong, nonatomic)   UIView                  *backgroundView;
 @property (strong, nonatomic)   UIView                  *contentView;
 
-- (id)initWithNewSavingsGoal;
-- (id)initWithSavingsGoal:(SavingsGoal *)savingsGoal;
+- (id)initWithNewLuxury;
+- (id)initWithLuxury:(Luxury *)luxury;
 
 - (void)present;
 - (void)dismiss;

@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic)               NSArray             *purchaseList;
 @property (strong, nonatomic)   IBOutlet    UITableView         *purchaseListTableView;
-@property (strong, nonatomic)               UIView              *createSavingsGoalView;
+@property (strong, nonatomic)               UIView              *createLuxuryView;
 
 @property (nonatomic)                       float               lastStopValue;
 

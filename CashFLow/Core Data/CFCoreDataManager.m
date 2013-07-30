@@ -11,7 +11,7 @@
 #import "NSManagedObject+Extension.h"
 
 #import "IncomeSession.h"
-#import "SavingsGoal.h"
+#import "Luxury.h"
 
 @implementation CFCoreDataManager
 
@@ -91,13 +91,13 @@
     return incomeSession;
 }
 
-- (SavingsGoal *)newSavingsGoal {
-    SavingsGoal *savingsGoal = [SavingsGoal newEntity:@"SavingsGoal" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[SavingsGoal countInContext:self]] onInsert:nil];
-    savingsGoal.deleted = [NSNumber numberWithBool:NO];
-    savingsGoal.completed = [NSNumber numberWithBool:NO];
+- (Luxury *)newLuxury {
+    Luxury *luxury = [Luxury newEntity:@"Luxury" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[Luxury countInContext:self]] onInsert:nil];
+    luxury.deleted = [NSNumber numberWithBool:NO];
+    luxury.completed = [NSNumber numberWithBool:NO];
     [self saveContext];
     
-    return savingsGoal;
+    return luxury;
 }
 
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession {
@@ -106,9 +106,9 @@
     [self saveContext];
 }
 
-- (void)deleteSavingsGoal:(SavingsGoal *)savingsGoal {
-    SavingsGoal *inContextSavingsGoal = (SavingsGoal *)[self objectWithID:savingsGoal.objectID];
-    inContextSavingsGoal.deleted = [NSNumber numberWithBool:YES];
+- (void)deleteLuxury:(Luxury *)luxury {
+    Luxury *inContextLuxury = (Luxury *)[self objectWithID:luxury.objectID];
+    inContextLuxury.deleted = [NSNumber numberWithBool:YES];
     [self saveContext];
 }
 
@@ -116,9 +116,9 @@
     return [IncomeSession findAllByAttribute:@"deleted" value:[NSNumber numberWithBool:NO] inContext:self];
 }
 
-- (NSArray *)allActiveSavingsGoals {
-    NSArray *allSavingsGoals = [SavingsGoal findAllByAttribute:@"deleted" value:[NSNumber numberWithBool:NO] inContext:self];
-    return [allSavingsGoals filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"completed == %@", [NSNumber numberWithBool:NO]]];
+- (NSArray *)allActiveLuxuries {
+    NSArray *allLuxuries = [Luxury findAllByAttribute:@"deleted" value:[NSNumber numberWithBool:NO] inContext:self];
+    return [allLuxuries filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"completed == %@", [NSNumber numberWithBool:NO]]];
 }
 
 @end

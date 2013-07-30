@@ -1,5 +1,5 @@
 //
-//  CFSavingsGoalEditView.m
+//  CFLuxuryEditView.m
 //  CashFLow
 //
 //  Created by Sam Watson on 22/07/13.
@@ -8,19 +8,19 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "CFSavingsGoalEditView.h"
+#import "CFLuxuryEditView.h"
 
 #import "CFCoreDataManager.h"
 #import "GPUImage.h"
-#import "SavingsGoal.h"
+#import "Luxury.h"
 
-@implementation CFSavingsGoalEditView
+@implementation CFLuxuryEditView
 
-- (id)initWithNewSavingsGoal {
+- (id)initWithNewLuxury {
     self = [super init];
     if (self) {
         self.temporaryContext = [CFCoreDataManager temporaryContext];
-        self.savingsGoal = [self.temporaryContext newSavingsGoal];
+        self.luxury = [self.temporaryContext newLuxury];
         
         [self initialiseSubviews];
         [self layout];
@@ -28,16 +28,16 @@
     return self;
 }
 
-- (id)initWithSavingsGoal:(SavingsGoal *)savingsGoal {
+- (id)initWithLuxury:(Luxury *)luxury {
     self = [super init];
     if (self) {
         self.temporaryContext = [CFCoreDataManager temporaryContext];
-        self.savingsGoal = (SavingsGoal *)[self.temporaryContext objectWithID:savingsGoal.objectID];
+        self.luxury = (Luxury *)[self.temporaryContext objectWithID:luxury.objectID];
         
         [self initialiseSubviews];
         
-        self.titleField.text = self.savingsGoal.title;
-        self.priceLabel.text = [NSString stringWithFormat:@"%g", [self.savingsGoal.price floatValue]];
+        self.titleField.text = self.luxury.title;
+        self.priceLabel.text = [NSString stringWithFormat:@"%g", [self.luxury.price floatValue]];
         [self.saveButton setTitle:@"Save" forState:UIControlStateNormal];
         
         [self layout];
