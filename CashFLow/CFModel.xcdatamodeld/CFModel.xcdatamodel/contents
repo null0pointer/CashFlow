@@ -44,6 +44,7 @@
         <attribute name="rate" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="taxes" inverseEntity="Job" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="taxes" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="balance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -51,13 +52,14 @@
         <relationship name="expenses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expense" inverseName="user" inverseEntity="Expense" syncable="YES"/>
         <relationship name="jobs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Job" inverseName="user" inverseEntity="Job" syncable="YES"/>
         <relationship name="luxuries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Luxury" inverseName="user" inverseEntity="Luxury" syncable="YES"/>
+        <relationship name="taxes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tax" inverseName="user" inverseEntity="Tax" syncable="YES"/>
     </entity>
     <elements>
         <element name="Expense" positionX="-614" positionY="-225" width="128" height="133"/>
-        <element name="IncomeSession" positionX="88" positionY="-301" width="128" height="148"/>
-        <element name="Job" positionX="-171" positionY="-207" width="128" height="208"/>
+        <element name="IncomeSession" positionX="-200" positionY="-297" width="128" height="148"/>
+        <element name="Job" positionX="9" positionY="-208" width="128" height="208"/>
         <element name="Luxury" positionX="-612" positionY="0" width="128" height="133"/>
-        <element name="Tax" positionX="88" positionY="-138" width="128" height="118"/>
-        <element name="User" positionX="-389" positionY="-144" width="128" height="118"/>
+        <element name="Tax" positionX="-189" positionY="29" width="128" height="133"/>
+        <element name="User" positionX="-389" positionY="-144" width="128" height="133"/>
     </elements>
 </model>
