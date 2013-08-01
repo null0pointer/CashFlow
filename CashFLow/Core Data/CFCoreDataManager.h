@@ -27,9 +27,12 @@
 
 - (User *)user;
 
+- (Job *)newJob;
+
 - (IncomeSession *)newIncomeSessionForJob:(Job *)job;
-- (Luxury *)newLuxury;
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession;
+
+- (Luxury *)newLuxury;
 - (void)deleteLuxury:(Luxury *)luxury;
 
 - (NSArray *)allIncomeSessions;

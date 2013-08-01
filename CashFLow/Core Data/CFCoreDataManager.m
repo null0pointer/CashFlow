@@ -97,6 +97,14 @@
     return self.user;
 }
 
+- (Job *)newJob {
+    Job *job = [Job newEntity:@"Job" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[Job countInContext:self]] onInsert:nil];
+    job.deleted = [NSNumber numberWithBool:YES];
+    
+    [self saveContext];
+    
+    return job;
+}
 
 - (IncomeSession *)newIncomeSessionForJob:(Job *)job {
     Job *inContextJob = (Job *)[self objectWithID:job.objectID];
@@ -112,6 +120,12 @@
     return incomeSession;
 }
 
+- (void)deleteIncomeSession:(IncomeSession *)incomeSession {
+    IncomeSession *inContextIncomeSession = (IncomeSession *)[self objectWithID:incomeSession.objectID];
+    inContextIncomeSession.deleted = [NSNumber numberWithBool:YES];
+    [self saveContext];
+}
+
 - (Luxury *)newLuxury {
     Luxury *luxury = [Luxury newEntity:@"Luxury" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[Luxury countInContext:self]] onInsert:nil];
     luxury.deleted = [NSNumber numberWithBool:NO];
@@ -119,12 +133,6 @@
     [self saveContext];
     
     return luxury;
-}
-
-- (void)deleteIncomeSession:(IncomeSession *)incomeSession {
-    IncomeSession *inContextIncomeSession = (IncomeSession *)[self objectWithID:incomeSession.objectID];
-    inContextIncomeSession.deleted = [NSNumber numberWithBool:YES];
-    [self saveContext];
 }
 
 - (void)deleteLuxury:(Luxury *)luxury {
