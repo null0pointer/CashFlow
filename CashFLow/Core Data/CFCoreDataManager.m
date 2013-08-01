@@ -14,6 +14,7 @@
 #import "Luxury.h"
 #import "User.h"
 #import "Job.h"
+#import "Expense.h"
 
 @implementation CFCoreDataManager
 
@@ -106,6 +107,12 @@
     return job;
 }
 
+- (void)deleteJob:(Job *)job {
+    Job *inContextJob = (Job *)[self objectWithID:job.objectID];
+    inContextJob.deleted = [NSNumber numberWithBool:YES];
+    [self saveContext];
+}
+
 - (IncomeSession *)newIncomeSessionForJob:(Job *)job {
     Job *inContextJob = (Job *)[self objectWithID:job.objectID];
     
@@ -123,6 +130,20 @@
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession {
     IncomeSession *inContextIncomeSession = (IncomeSession *)[self objectWithID:incomeSession.objectID];
     inContextIncomeSession.deleted = [NSNumber numberWithBool:YES];
+    [self saveContext];
+}
+
+- (Expense *)newExpense {
+    Expense *expense = [Expense newEntity:@"Expense" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInt:[Expense countInContext:self]] onInsert:nil];
+    expense.deleted = [NSNumber numberWithBool:NO];
+    
+    [self saveContext];
+    return expense;
+}
+
+- (void)deleteExpense:(Expense *)expense {
+    Expense *inContextExpense = (Expense *)[self objectWithID:expense.objectID];
+    inContextExpense.deleted = [NSNumber numberWithBool:YES];
     [self saveContext];
 }
 

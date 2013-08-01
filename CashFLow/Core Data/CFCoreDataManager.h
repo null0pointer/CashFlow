@@ -13,6 +13,7 @@
 @class Job;
 @class Tax;
 @class User;
+@class Expense;
 
 @interface CFCoreDataManager : NSManagedObjectContext
 
@@ -28,10 +29,13 @@
 - (User *)user;
 
 - (Job *)newJob;
+- (void)deleteJob:(Job *)job;
 
 - (IncomeSession *)newIncomeSessionForJob:(Job *)job;
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession;
 
+- (Expense *)newExpense;
+- (void)deleteExpense:(Expense *)expense;
 - (Luxury *)newLuxury;
 - (void)deleteLuxury:(Luxury *)luxury;
 
