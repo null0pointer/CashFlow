@@ -76,10 +76,10 @@
     UIImage *layerImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.purchaseListTableView.frame.origin.x, self.purchaseListTableView.frame.origin.y, self.purchaseListTableView.frame.size.width, gradientLayer.frame.size.height)];
-    [imageView setImage:layerImage];
+    self.tableViewShadow = [[UIImageView alloc] initWithFrame:CGRectMake(self.purchaseListTableView.frame.origin.x, self.purchaseListTableView.frame.origin.y, self.purchaseListTableView.frame.size.width, gradientLayer.frame.size.height)];
+    [self.tableViewShadow setImage:layerImage];
     
-    [self.view addSubview:imageView];
+    [self.view addSubview:self.tableViewShadow];
 }
 
 - (IBAction)startButtonPressed:(id)sender {
@@ -147,6 +147,12 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     float yOffset = scrollView.contentOffset.y;
+    
+    if (ABS(yOffset) > 10.0) {
+        self.tableViewShadow.alpha = 1.0;
+    } else {
+        self.tableViewShadow.alpha = ABS(yOffset) / 10.0;
+    }
     
     if (yOffset >= 0) {
         self.createLuxuryView.alpha = 0.0;

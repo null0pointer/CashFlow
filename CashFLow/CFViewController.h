@@ -22,6 +22,8 @@
 @property (strong, nonatomic)   IBOutlet    UITableView         *purchaseListTableView;
 @property (strong, nonatomic)               UIView              *createLuxuryView;
 
+@property (strong, nonatomic)               UIImageView         *tableViewShadow;
+
 @property (nonatomic)                       float               lastStopValue;
 
 - (IBAction)startButtonPressed:(id)sender;
