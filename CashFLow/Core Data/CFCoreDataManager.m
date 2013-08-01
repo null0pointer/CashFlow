@@ -15,6 +15,7 @@
 #import "User.h"
 #import "Job.h"
 #import "Expense.h"
+#import "Tax.h"
 
 @implementation CFCoreDataManager
 
@@ -169,6 +170,24 @@
 - (void)deleteLuxury:(Luxury *)luxury {
     Luxury *inContextLuxury = (Luxury *)[self objectWithID:luxury.objectID];
     inContextLuxury.deleted = [NSNumber numberWithBool:YES];
+    [self saveContext];
+}
+
+- (Tax *)newTax {
+    Tax *tax = [Tax newEntity:@"Tax" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInt:[Tax countInContext:self]] onInsert:nil];
+    tax.deleted = [NSNumber numberWithBool:NO];
+    
+    tax.user = [self user];
+    [[self user] addTaxesObject:tax];
+    
+    [self saveContext];
+    
+    return tax;
+}
+
+- (void)deleteTax:(Tax *)tax {
+    Tax *inContextTax = (Tax *)[self objectWithID:tax.objectID];
+    inContextTax.deleted = [NSNumber numberWithBool:YES];
     [self saveContext];
 }
 

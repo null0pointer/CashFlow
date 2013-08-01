@@ -39,6 +39,9 @@
 - (Luxury *)newLuxury;
 - (void)deleteLuxury:(Luxury *)luxury;
 
+- (Tax *)newTax;
+- (void)deleteTax:(Tax *)tax;
+
 - (NSArray *)allIncomeSessions;
 - (NSArray *)allActiveLuxuries;
 
