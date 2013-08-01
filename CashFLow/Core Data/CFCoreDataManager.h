@@ -27,7 +27,7 @@
 
 - (User *)user;
 
-- (IncomeSession *)newIncomeSessionForJob:(Job *)Job;
+- (IncomeSession *)newIncomeSessionForJob:(Job *)job;
 - (Luxury *)newLuxury;
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession;
 - (void)deleteLuxury:(Luxury *)luxury;

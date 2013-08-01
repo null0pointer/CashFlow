@@ -13,6 +13,7 @@
 #import "IncomeSession.h"
 #import "Luxury.h"
 #import "User.h"
+#import "Job.h"
 
 @implementation CFCoreDataManager
 
@@ -97,9 +98,15 @@
 }
 
 
-- (IncomeSession *)newIncomeSession {
+- (IncomeSession *)newIncomeSessionForJob:(Job *)job {
+    Job *inContextJob = (Job *)[self objectWithID:job.objectID];
+    
     IncomeSession *incomeSession = [IncomeSession newEntity:@"IncomeSession" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[IncomeSession countInContext:self]] onInsert:nil];
     incomeSession.deleted = [NSNumber numberWithBool:NO];
+    
+    [inContextJob addIncome_sessionsObject:incomeSession];
+    incomeSession.job = inContextJob;
+    
     [self saveContext];
     
     return incomeSession;
