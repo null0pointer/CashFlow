@@ -102,6 +102,9 @@
     Job *job = [Job newEntity:@"Job" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[Job countInContext:self]] onInsert:nil];
     job.deleted = [NSNumber numberWithBool:YES];
     
+    job.user = [self user];
+    [[self user] addJobsObject:job];
+    
     [self saveContext];
     
     return job;
@@ -137,6 +140,9 @@
     Expense *expense = [Expense newEntity:@"Expense" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInt:[Expense countInContext:self]] onInsert:nil];
     expense.deleted = [NSNumber numberWithBool:NO];
     
+    expense.user = [self user];
+    [[self user] addExpensesObject:expense];
+    
     [self saveContext];
     return expense;
 }
@@ -151,6 +157,10 @@
     Luxury *luxury = [Luxury newEntity:@"Luxury" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInteger:[Luxury countInContext:self]] onInsert:nil];
     luxury.deleted = [NSNumber numberWithBool:NO];
     luxury.completed = [NSNumber numberWithBool:NO];
+    
+    luxury.user = [self user];
+    [[self user] addLuxuriesObject:luxury];
+    
     [self saveContext];
     
     return luxury;
