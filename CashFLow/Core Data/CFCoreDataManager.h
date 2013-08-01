@@ -10,8 +10,13 @@
 
 @class IncomeSession;
 @class Luxury;
+@class Job;
+@class Tax;
+@class User;
 
 @interface CFCoreDataManager : NSManagedObjectContext
+
+@property (weak, nonatomic) User    *user;
 
 + (CFCoreDataManager *)writerContext;
 + (CFCoreDataManager *)mainContext;
@@ -20,7 +25,9 @@
 - (id)initWithConcurrencyType:(NSManagedObjectContextConcurrencyType)ct;
 - (void)saveContext;
 
-- (IncomeSession *)newIncomeSession;
+- (User *)user;
+
+- (IncomeSession *)newIncomeSessionForJob:(Job *)Job;
 - (Luxury *)newLuxury;
 - (void)deleteIncomeSession:(IncomeSession *)incomeSession;
 - (void)deleteLuxury:(Luxury *)luxury;

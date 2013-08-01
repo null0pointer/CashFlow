@@ -12,6 +12,7 @@
 
 #import "IncomeSession.h"
 #import "Luxury.h"
+#import "User.h"
 
 @implementation CFCoreDataManager
 
@@ -80,6 +81,19 @@
             [parentContext saveContext];
         }];
     }
+}
+
+- (User *)user {
+    if (self.user == nil) {
+        if ([User countInContext:self] > 0) {
+            self.user = [[User findAllInContext:self] lastObject];
+        } else {
+            self.user = (User *)[User newEntity:@"User" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInt:[User countInContext:self]] onInsert:nil];
+            [self saveContext];
+        }
+    }
+    
+    return self.user;
 }
 
 
