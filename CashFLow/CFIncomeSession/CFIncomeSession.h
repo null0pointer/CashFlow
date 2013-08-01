@@ -14,6 +14,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Job;
+
 @interface CFIncomeSession : NSObject
 
 @property (nonatomic)           BOOL            isActive;
@@ -22,6 +24,7 @@
 @property (strong, nonatomic)   NSDate          *sessionStartDate;
 @property (nonatomic)           NSTimeInterval  sessionStartTime;
 @property (nonatomic)           CGFloat         value;
+@property (nonatomic)           Job             *sessionJob;
 
 @property (nonatomic)           CGFloat         moneyPerHour;
 @property (nonatomic)           CGFloat         moneyPerSecond;
@@ -29,7 +32,7 @@
 
 + (CFIncomeSession *)shared;
 
-- (void)beginIncomeSession;
+- (void)beginIncomeSessionForJob:(Job *)job;
 - (void)endIncomeSession;
 
 - (void)addUpdateObserver:(id)observer withSelector:(SEL)selector;

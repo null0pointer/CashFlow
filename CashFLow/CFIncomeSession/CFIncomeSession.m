@@ -10,6 +10,7 @@
 #import "CFCoreDataManager.h"
 
 #import "IncomeSession.h"
+#import "Job.h"
 
 @implementation CFIncomeSession
 
@@ -51,11 +52,12 @@
     }
 }
 
-- (void)beginIncomeSession {
+- (void)beginIncomeSessionForJob:(Job *)job {
     self.isActive = YES;
     
     self.sessionStartDate = [NSDate date];
     self.sessionStartTime = [self.sessionStartDate timeIntervalSince1970];
+    self.sessionJob = job;
     
     CGFloat secondsPerHundredth = (1 / _moneyPerSecond) / 100;
     NSTimeInterval updateInterval = MAX(secondsPerHundredth, CFIncomeSessionMinimumUpdateInterval);
@@ -69,7 +71,7 @@
     
     CFCoreDataManager *temporaryContext = [CFCoreDataManager temporaryContext];
     
-    IncomeSession *incomeSession = [temporaryContext newIncomeSession];
+    IncomeSession *incomeSession = [temporaryContext newIncomeSessionForJob:self.sessionJob];
     
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval timeDifference = currentTime - self.sessionStartTime;
