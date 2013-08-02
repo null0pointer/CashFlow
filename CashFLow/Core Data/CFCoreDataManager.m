@@ -19,6 +19,8 @@
 
 @implementation CFCoreDataManager
 
+@synthesize user = _user;
+
 + (CFCoreDataManager *)writerContext {
     static CFCoreDataManager *writerContext = nil;
     static dispatch_once_t onceToken;
@@ -87,16 +89,16 @@
 }
 
 - (User *)user {
-    if (self.user == nil) {
+    if (_user == nil) {
         if ([User countInContext:self] > 0) {
-            self.user = [[User findAllInContext:self] lastObject];
+            _user = [[User findAllInContext:self] lastObject];
         } else {
-            self.user = (User *)[User newEntity:@"User" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInt:[User countInContext:self]] onInsert:nil];
+            _user = (User *)[User newEntity:@"User" inContext:self idAttribute:@"identifier" value:[NSNumber numberWithInt:[User countInContext:self]] onInsert:nil];
             [self saveContext];
         }
     }
     
-    return self.user;
+    return _user;
 }
 
 - (Job *)newJob {
