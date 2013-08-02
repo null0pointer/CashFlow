@@ -1,3 +1,6 @@
 [submodule "GPUImage"]
 	path = GPUImage
 	url = https://github.com/BradLarson/GPUImage.git
+[submodule "SWSelectionSlider"]
+	path = SWSelectionSlider
+	url = git@github.com:null0pointer/SWSelectionSlider.git
