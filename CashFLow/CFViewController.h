@@ -23,6 +23,7 @@
 @property (strong, nonatomic)               UIView              *createLuxuryView;
 
 @property (strong, nonatomic)               UIImageView         *tableViewShadow;
+@property (strong, nonatomic)               UIView              *tableViewSeparatorLine;
 
 @property (nonatomic)                       float               lastStopValue;
 

@@ -80,6 +80,11 @@
     [self.tableViewShadow setImage:layerImage];
     
     [self.view addSubview:self.tableViewShadow];
+    
+    self.tableViewShadow.alpha = 0.0;
+    self.tableViewSeparatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableViewShadow.frame.origin.y, self.view.frame.size.width, 1)];
+    self.tableViewSeparatorLine.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.1];
+    [self.view addSubview:self.tableViewSeparatorLine];
 }
 
 - (IBAction)startButtonPressed:(id)sender {
@@ -150,8 +155,10 @@
     
     if (ABS(yOffset) > 10.0) {
         self.tableViewShadow.alpha = 1.0;
+        self.tableViewSeparatorLine.alpha = 0.0;
     } else {
         self.tableViewShadow.alpha = ABS(yOffset) / 10.0;
+        self.tableViewSeparatorLine.alpha = 1.0 - (ABS(yOffset) / 10.0);
     }
     
     if (yOffset >= 0) {
