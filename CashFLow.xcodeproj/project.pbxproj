@@ -24,6 +24,7 @@
 		221700131796DBC30046CD3C /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 221700031796D9AB0046CD3C /* libGPUImage.a */; };
 		2217FC10179658810046CD3C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217FC0F179658810046CD3C /* CoreImage.framework */; };
 		2217FC1317965D2B0046CD3C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2217FC1217965D2B0046CD3C /* QuartzCore.framework */; };
+		222A423617AC578B0075BD55 /* SWSelectionSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 222A423517AC578B0075BD55 /* SWSelectionSlider.m */; };
 		223BEF09179411D9008A7075 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223BEF08179411D9008A7075 /* UIKit.framework */; };
 		223BEF0B179411D9008A7075 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223BEF0A179411D9008A7075 /* Foundation.framework */; };
 		223BEF0D179411D9008A7075 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223BEF0C179411D9008A7075 /* CoreGraphics.framework */; };
@@ -95,6 +96,8 @@
 		2217FC0F179658810046CD3C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		2217FC1217965D2B0046CD3C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		222A423417AC578B0075BD55 /* SWSelectionSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSelectionSlider.h; sourceTree = "<group>"; };
+		222A423517AC578B0075BD55 /* SWSelectionSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSelectionSlider.m; sourceTree = "<group>"; };
 		223BEF05179411D9008A7075 /* CashFLow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashFLow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		223BEF08179411D9008A7075 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		223BEF0A179411D9008A7075 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -175,10 +178,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		222A423317AC578B0075BD55 /* SWSelectionSlider */ = {
+			isa = PBXGroup;
+			children = (
+				222A423417AC578B0075BD55 /* SWSelectionSlider.h */,
+				222A423517AC578B0075BD55 /* SWSelectionSlider.m */,
+			);
+			path = SWSelectionSlider;
+			sourceTree = "<group>";
+		};
 		223BEEFC179411D9008A7075 = {
 			isa = PBXGroup;
 			children = (
 				2217FFFC1796D9AA0046CD3C /* GPUImage.xcodeproj */,
+				222A423317AC578B0075BD55 /* SWSelectionSlider */,
 				223BEF0E179411D9008A7075 /* CashFLow */,
 				223BEF07179411D9008A7075 /* Frameworks */,
 				223BEF06179411D9008A7075 /* Products */,
@@ -389,6 +402,7 @@
 				2212808817A7D0880077280C /* CFLuxuryEditView.m in Sources */,
 				224D820817AA672800FC52A8 /* Tax.m in Sources */,
 				224D820D17AA675400FC52A8 /* User.m in Sources */,
+				222A423617AC578B0075BD55 /* SWSelectionSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

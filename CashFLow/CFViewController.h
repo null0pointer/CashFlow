@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 
 #import "CFNumberPad.h"
+#import "SWSelectionSlider.h"
 
 @class CFPurchaseListCell;
 
-@interface CFViewController : UIViewController <CFNumberPadDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface CFViewController : UIViewController <CFNumberPadDelegate, UITableViewDataSource, UITableViewDelegate, SWSelectionSliderDelegate, SWSelectionSliderDataSource>
 
 @property (strong, nonatomic)   IBOutlet    UILabel             *cashLabel;
 @property (strong, nonatomic)   IBOutlet    UIButton            *startButton;
 @property (strong, nonatomic)   IBOutlet    UIButton            *hourlyRateButton;
+
+@property (strong, nonatomic)   IBOutlet    SWSelectionSlider   *jobSelectionSlider;
 
 @property (strong, nonatomic)               NSArray             *purchaseList;
 @property (strong, nonatomic)   IBOutlet    UITableView         *purchaseListTableView;

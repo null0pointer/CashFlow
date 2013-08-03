@@ -33,6 +33,9 @@
     
     self.purchaseList = [[CFCoreDataManager mainContext] allActiveLuxuries];
     
+    self.jobSelectionSlider.delegate = self;
+    self.jobSelectionSlider.dataSource = self;
+    
     self.purchaseListTableView.delegate = self;
     self.purchaseListTableView.dataSource = self;
     
@@ -126,6 +129,20 @@
         [[CFIncomeSession shared] setMoneyPerHour:value];
         [self.hourlyRateButton setTitle:[NSString stringWithFormat:@"at $%.2f/hr", [[CFIncomeSession shared] moneyPerHour]] forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - SWSelectionSliderDataSource/SWSelectionSliderDelegate
+
+- (NSInteger)numberOfSelectionsForSlider:(SWSelectionSlider *)slider {
+    return 5;
+}
+
+- (NSString *)slider:(SWSelectionSlider *)slider titleForSelectionAtIndex:(NSInteger)index {
+    return @"";
+}
+
+- (void)slider:(SWSelectionSlider *)slider didSelectIndex:(NSInteger)index {
+    
 }
 
 #pragma mark - UITableViewDataSource/UITableViewDelegate
