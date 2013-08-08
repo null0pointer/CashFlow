@@ -19,7 +19,7 @@
 @property (strong, nonatomic)   IBOutlet    UIButton            *startButton;
 @property (strong, nonatomic)   IBOutlet    UIButton            *hourlyRateButton;
 
-@property (strong, nonatomic)   IBOutlet    SWSelectionSlider   *jobSelectionSlider;
+@property (strong, nonatomic)               SWSelectionSlider   *jobSelectionSlider;
 
 @property (strong, nonatomic)               NSArray             *purchaseList;
 @property (strong, nonatomic)   IBOutlet    UITableView         *purchaseListTableView;

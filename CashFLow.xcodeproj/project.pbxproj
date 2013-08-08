@@ -39,6 +39,7 @@
 		223BEF28179411D9008A7075 /* CFViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223BEF26179411D9008A7075 /* CFViewController_iPad.xib */; };
 		224D820817AA672800FC52A8 /* Tax.m in Sources */ = {isa = PBXBuildFile; fileRef = 224D820717AA672800FC52A8 /* Tax.m */; };
 		224D820D17AA675400FC52A8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 224D820C17AA675400FC52A8 /* User.m */; };
+		229EB1C117B39A78003157A2 /* SWSelectionSlidingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 229EB1C017B39A78003157A2 /* SWSelectionSlidingView.m */; };
 		22D7D1DA179A788800C8ACD8 /* CFModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1D8179A788800C8ACD8 /* CFModel.xcdatamodeld */; };
 		22D7D1E3179A7AFD00C8ACD8 /* CFCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D7D1E2179A7AFD00C8ACD8 /* CFCoreDataManager.m */; };
 		22D7D1E6179A7E4500C8ACD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D7D1E5179A7E4500C8ACD8 /* CoreData.framework */; };
@@ -119,6 +120,8 @@
 		224D820717AA672800FC52A8 /* Tax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tax.m; path = "Core Data/Tax.m"; sourceTree = "<group>"; };
 		224D820B17AA675400FC52A8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = "Core Data/User.h"; sourceTree = "<group>"; };
 		224D820C17AA675400FC52A8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "Core Data/User.m"; sourceTree = "<group>"; };
+		229EB1BF17B39A78003157A2 /* SWSelectionSlidingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSelectionSlidingView.h; sourceTree = "<group>"; };
+		229EB1C017B39A78003157A2 /* SWSelectionSlidingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSelectionSlidingView.m; sourceTree = "<group>"; };
 		22D7D1D9179A788800C8ACD8 /* CFModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CFModel.xcdatamodel; sourceTree = "<group>"; };
 		22D7D1E1179A7AFD00C8ACD8 /* CFCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFCoreDataManager.h; path = "Core Data/CFCoreDataManager.h"; sourceTree = "<group>"; };
 		22D7D1E2179A7AFD00C8ACD8 /* CFCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFCoreDataManager.m; path = "Core Data/CFCoreDataManager.m"; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 			children = (
 				222A423417AC578B0075BD55 /* SWSelectionSlider.h */,
 				222A423517AC578B0075BD55 /* SWSelectionSlider.m */,
+				229EB1BF17B39A78003157A2 /* SWSelectionSlidingView.h */,
+				229EB1C017B39A78003157A2 /* SWSelectionSlidingView.m */,
 			);
 			path = SWSelectionSlider;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 				224D820817AA672800FC52A8 /* Tax.m in Sources */,
 				224D820D17AA675400FC52A8 /* User.m in Sources */,
 				222A423617AC578B0075BD55 /* SWSelectionSlider.m in Sources */,
+				229EB1C117B39A78003157A2 /* SWSelectionSlidingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

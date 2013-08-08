@@ -33,8 +33,10 @@
     
     self.purchaseList = [[CFCoreDataManager mainContext] allActiveLuxuries];
     
+    self.jobSelectionSlider = [[SWSelectionSlider alloc] initWithFrame:CGRectMake(69, 87, 182, 39)];
     self.jobSelectionSlider.delegate = self;
     self.jobSelectionSlider.dataSource = self;
+    [self.view addSubview:self.jobSelectionSlider];
     
     self.purchaseListTableView.delegate = self;
     self.purchaseListTableView.dataSource = self;
