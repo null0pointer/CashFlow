@@ -140,7 +140,7 @@
 }
 
 - (NSString *)slider:(SWSelectionSlider *)slider titleForSelectionAtIndex:(NSInteger)index {
-    return @"";
+    return @"hello";
 }
 
 - (void)slider:(SWSelectionSlider *)slider didSelectIndex:(NSInteger)index {
